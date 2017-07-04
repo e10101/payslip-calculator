@@ -35,15 +35,17 @@ payslip.setTaxRates(taxRatesFile);
 var input = fs.createReadStream(inputFile);
 
 // Set csv file columns
-var parser = parse({columns: ['firstName', 'lastName', 'annualSalary', 'superRate', 'paymentStartDate']});
+var parser = parse({columns: ['firstName', 'lastName', 'annualSalary', 'superRate', 'paymentStartDate'], relax_column_count: true, skip_empty_lines: true});
 
 // Transform the input to output
 var transformer = transform(function(record, callback) {
     // Calculate the employee monthly payslip
     var converted = payslip.convert(record);
 
-    // Send the result to stream
-    return callback(null, payslip.stringify(converted));
+    if (converted) {
+        // Send the result to stream
+        return callback(null, payslip.stringify(converted));
+    }
 });
 
 // By Using the stream, convert input to output
