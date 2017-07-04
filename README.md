@@ -29,6 +29,18 @@ node index.js --input sample.csv --output output.csv
 cat output.csv
 ```
 
+#### sample.csv
+```csv
+David,Rudd,60050,9%,01 March – 31 March
+Ryan,Chen,120000,10%,01 March – 31 March
+```
+
+#### output.csv
+```csv
+David Rudd,01 March – 31 March,5004,922,4082,450
+Ryan Chen,01 March – 31 March,10000,2696,7304,1000
+```
+
 ## Approach
  - TODO
  
