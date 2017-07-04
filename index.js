@@ -1,9 +1,9 @@
-var fs = require('fs');
-var parse = require('csv-parse');
-var transform = require('stream-transform');
-var payslip = require('./lib/converter');
-var path = require('path');
-var argv = require('optimist')
+const fs = require('fs');
+const parse = require('csv-parse');
+const transform = require('stream-transform');
+const payslip = require('./lib/converter');
+const path = require('path');
+const argv = require('optimist')
     .usage('Usage: $0 --input [file]')
     .alias('input', 'i')
     .alias('output', 'o')
@@ -15,32 +15,29 @@ var argv = require('optimist')
     .demand(['input'])
     .argv;
 
-// Get the input file path
-var inputFile = path.resolve(__dirname, argv.input);
-// Get the tax rates file path
-var taxRatesFile = path.resolve(__dirname, argv.rates);
+const inputFile = path.resolve(__dirname, argv.input);
+const taxRatesFile = path.resolve(__dirname, argv.rates);
 
 // Default output to terminal
-var output = process.stdout;
+let output = process.stdout;
 
-// If set the output params, save the output to file.
 if (argv.output) {
     output = fs.createWriteStream(path.resolve(__dirname, argv.output));
 }
 
-// Set the tax rates
 payslip.setTaxRates(taxRatesFile);
 
-// Read from input file
-var input = fs.createReadStream(inputFile);
+const input = fs.createReadStream(inputFile);
 
-// Set csv file columns
-var parser = parse({columns: ['firstName', 'lastName', 'annualSalary', 'superRate', 'paymentStartDate'], relax_column_count: true, skip_empty_lines: true});
+const parser = parse({
+    columns: ['firstName', 'lastName', 'annualSalary', 'superRate', 'paymentStartDate'],
+    relax_column_count: true,
+    skip_empty_lines: true
+    });
 
-// Transform the input to output
-var transformer = transform(function(record, callback) {
+const transformer = transform(function(record, callback) {
     // Calculate the employee monthly payslip
-    var converted = payslip.convert(record);
+    const converted = payslip.convert(record);
 
     if (converted) {
         // Send the result to stream
@@ -48,7 +45,6 @@ var transformer = transform(function(record, callback) {
     }
 });
 
-// By Using the stream, convert input to output
 input.pipe(parser)
     .pipe(transformer)
     .pipe(output);
