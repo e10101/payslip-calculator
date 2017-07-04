@@ -23,3 +23,39 @@ node index.js --input sample.csv --output output.csv
 
 cat output.csv
 ```
+
+## tax_rates.json file
+```json
+[
+    {
+        "minSalary": 0,
+        "maxSalary": 18200,
+        "baseTax": 0,
+        "taxEachDollar": 0
+    },
+    {
+        "minSalary": 18201,
+        "maxSalary": 37000,
+        "baseTax": 0,
+        "taxEachDollar": 0.19
+    },
+    {
+        "minSalary": 37001,
+        "maxSalary": 80000,
+        "baseTax": 3572,
+        "taxEachDollar": 0.325
+    },
+    {
+        "minSalary": 80001,
+        "maxSalary": 180000,
+        "baseTax": 17547,
+        "taxEachDollar": 0.37
+    },
+    {
+        "minSalary": 180001,
+        "maxSalary": -1,
+        "baseTax": 54547,
+        "taxEachDollar": 0.45
+    }
+]
+```
