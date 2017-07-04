@@ -7,6 +7,8 @@
 ```
 git clone https://github.com/e10101/payslip-calculator.git
 cd payslip-calculator
+```
+```
 npm install
 ```
 
@@ -20,14 +22,39 @@ Options:
   --output, -o  The output csv file, default output command line.
 ```
 
-## Demo
+### Demo
 ```
 node index.js --input sample.csv --output output.csv
 
 cat output.csv
 ```
 
-## Tax rates
+## Approach
+ - TODO
+ 
+### Exceptions Handle
+ - Wrong columns input line will be ignore;
+ - Empty input file will be ignore;
+
+## Assumptions
+ - The file type of input should be csv;
+ - There is no header with the input file;
+ - The delimiter of the csv file should be ','(comma);
+ - The input data format should be: `first name, last name, annual salary, super rate (%), payment start date`;
+ - The size of input file should small than 20MB or less than 500K lines;
+ 
+## Technologies
+ - [Node.js](http://nodejs.org)
+ - [Mocha](http://mochajs.org)
+ - [Chai](http://chaijs.com/)
+ - [Travis CI](https://travis-ci.org/)
+ - [node-csv](https://github.com/wdavidw/node-csv)
+ - [node-optimist](https://github.com/substack/node-optimist)
+ 
+## TODO
+ - Added .xls file type output support.
+
+## Tax Rates
 The following rates for 2012-13 apply from 1 July 2012.
 
 Taxable income | Tax on this income
