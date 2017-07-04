@@ -21,11 +21,9 @@
   },
   "homepage": "https://github.com/e10101/payslip-calculator#readme",
   "dependencies": {
-    "csv-generate": "^1.0.0",
     "csv-parse": "^1.2.0",
-    "csv-stringify": "^1.0.4",
-    "split": "^1.0.0",
-    "stream-transform": "^0.1.2",
-    "through2": "^2.0.3"
+    "optimist": "^0.6.1",
+    "path": "^0.12.7",
+    "stream-transform": "^0.1.2"
   }
 }
