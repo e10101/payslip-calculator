@@ -2,6 +2,8 @@
 
 ## Setup
 ```
+git clone https://github.com/e10101/payslip-calculator.git
+cd payslip-calculator
 npm install
 ```
 
@@ -18,4 +20,6 @@ Options:
 ## Demo
 ```
 node index.js --input sample.csv --output output.csv
+
+cat output.csv
 ```
