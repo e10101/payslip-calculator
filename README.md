@@ -42,18 +42,23 @@ Ryan Chen,01 March – 31 March,10000,2696,7304,1000
 ```
 
 ## Approach
- - TODO
+ - Save the tax rates table to the JSON file and use the array to represent each level, each of which is in the following format: minSalary, maxSalary, baseTax, taxEachDollar. And using -1 presents for unlimited maxSalary.
+ - By loading the tax rates table file, calculate the amount of tax in the case of different annual salary.
+ - Use `node-optimist` to get the input file, the output file, and the tax rates table parameter. And use the `node-csv` to load different files.
+ - Use `Mocha` and `Chai` for testing
+ - Add incorrect formatting input file processing code.
  
-### Exceptions Handle
- - Wrong columns input line will be ignore;
- - Empty input file will be ignore;
-
 ## Assumptions
  - The file type of input should be csv;
  - There is no header with the input file;
  - The delimiter of the csv file should be ','(comma);
  - The input data format should be: `first name, last name, annual salary, super rate (%), payment start date`;
  - The size of input file should small than 20MB or less than 500K lines;
+
+### Exceptions Handle
+ - Wrong columns input line will be ignore;
+ - Empty input file will be ignore;
+
  
 ## Technologies
  - [Node.js](http://nodejs.org)
@@ -65,7 +70,9 @@ Ryan Chen,01 March – 31 March,10000,2696,7304,1000
  - [node-optimist](https://github.com/substack/node-optimist)
  
 ## TODO
- - Added .xls file type output support.
+ - Add .xls file type output support.
+ - Add API server module.
+ - Add AngularJS client module.
 
 ## Tax Rates
 The following rates for 2012-13 apply from 1 July 2012.
@@ -78,7 +85,7 @@ $37,001 - $80,000 | $3,572 plus 32.5c for each $1 over $37,000
 $80,001 - $180,000 | $17,547 plus 37c for each $1 over $80,000
 $180,001 and over | $54,547 plus 45c for each $1 over $180,000
 
-### tax_rates.json file
+#### tax_rates.json file
 ```json
 [
     {
